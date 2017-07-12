@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form, 
+		fieldset,input,textarea,p,blockquote,th,td { 
+			margin:0; 
+			padding:0; 
+		} 
+		table { 
+			border-collapse:collapse; 
+			border-spacing:0; 
+		} 
+		fieldset,img { 
+			border:0; 
+		} 
+		address,caption,cite,code,dfn,em,strong,th,var { 
+			font-style:normal; 
+			font-weight:normal; 
+		} 
+
+		body {
+			background-color: #000000;
+		}
+
+		.content { 
+			width:	100%; 
+			margin: 20px auto;
+			background-color: #F5F5F5;
+			float: left;
+			zoom:1;
+		}
+
+		.content:after{
+			content: "";
+			display:block;
+			clear:both;
+		}
+
+		.left1 {
+			width: 300px;
+			height: 100px;
+			margin-top: 10px;
+			margin-left: 10px;
+			margin-bottom: 10px;
+			background-color: #ff0000;
+			float: left;
+		}
+
+		.right1 {
+			height: 100px;
+			margin-top: 10px;
+			margin-left: 320px;
+			margin-right: 10px;
+			margin-bottom: 10px;
+			background-color: #ADFF2F;
+		}
+
+		.left2 {
+			float: left;
+			width: 300px;
+			height: 100px;
+			margin-top: 10px;
+			margin-left: 10px;
+			margin-bottom: 10px;
+			background-color: #ff0000;
+		}
+
+		.right2 {
+			float: right;
+			width: 300px;
+			height: 100px;
+			margin-top: 10px;
+			margin-right: 10px;
+			margin-bottom: 10px;
+			right: 0px;
+			background-color: #ADFF2F;
+	
+		}
+
+		.center2 {
+			height: 100px;
+			margin-top: 10px;
+			margin-left: 320px;
+			margin-right: 320px;
+			margin-bottom: 10px;
+			background-color: #BA55D3;
+		}
+
+	
+	</style>
+
+</head>
+<body>
+	<div class="content">
+		<div class="left1">左侧固定</div>
+		<div class="right1">右侧自适应</div>
+	</div>
+	<div class="content">
+		<div class="left2">左侧固定</div>
+		<div class="right2">右侧固定</div>
+		<div class="center2">中间自适应</div>
+	</div>
+
+</body>
+</html>
