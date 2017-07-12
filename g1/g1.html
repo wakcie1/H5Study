@@ -80,13 +80,21 @@
     <img id="person2" class="person2 p3" src="p2.png">
 </div>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="g1.js"></script>
 <script type="text/javascript">
+
+
+    var config =
+    { "basePath": '' };
+    g1PageInit(config);
+
 	$(function(){ 
-		requestAnimationFrame(personmove);
+		//requestAnimationFrame(personmove);
 　　}); 
 
-	var w = window;
+    var w = window;
 	requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
+	
 	var person1Point = {
 	    left: 0,
 	    top: 0
