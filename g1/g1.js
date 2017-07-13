@@ -34,8 +34,10 @@
     var person2Info = {
         left: 200,
         top: 200,
+        picleft: 0,
+        pictop: 0,
         picIndex: 1,
-        face: 'd'
+        face: 'r'
     };
     var person1 = $("#person1");
     var person2 = $("#person2");
@@ -76,59 +78,43 @@
                 then1 = now - (delta1 % interval1);
                 personOneAction.MoveAnimation();
             }
-            var left = person1Info.left + person1Info.picleft;
-            var top = person1Info.top + person1Info.pictop;
-            person1.css("left", left + 'px');
-            person1.css("top", top + 'px');
+            personOneAction.ChangeFace();
+            DrawAnimation.DrawPerson();
             requestAnimationFrame(personOneAction.ProxyMove);
-            requestAnimationFrame(personOneAction.ChangeFace);
         },
     };
 
     var personOneAction = {
         MoveAnimation: function() {
-            person1.removeAttr("class");
-            person1.addClass("person1");
+            var top = person1Info.top + person1Info.pictop;
+            person1.removeAttr("class").css("top", top + 'px');
+            person1.addClass("person1").css("top", top + 'px');
             switch(person1Info.picIndex)
             {
                 case 1:
-                  person1.addClass(person1Info.face + '1');
+                  person1.addClass(person1Info.face + '1').css("top", top + 'px');
                   person1Info.picIndex += 1;
                   person1Info.picleft = 0;
                   break;
                 case 2:
-                  person1.addClass(person1Info.face + '2');
+                  person1.addClass(person1Info.face + '2').css("top", top + 'px');
                   person1Info.picIndex += 1;
                   person1Info.picleft = -40;
                   break;
                 case 3:
-                  person1.addClass(person1Info.face + '3');
+                  person1.addClass(person1Info.face + '3').css("top", top + 'px');
                   person1Info.picIndex = 1;
                   person1Info.picleft = -80;
                   break;
-            }
-            switch(person1Info.face)
-            {
-                case 'd':
-                    person1Info.pictop = 0;
-                    break;
-                case 'l': 
-                    person1Info.pictop = -40; 
-                    break;
-                case 'r':
-                    person1Info.pictop = -80;    
-                    break;
-                case 'u':
-                    person1Info.pictop = -120; 
-                    break;
-            }
-           
-            
+            } 
         },
         ChangeFace: function() {
             //right
             if (39 in keysDown) { 
                 person1Info.face = 'r';
+                person1Info.pictop = -80;   
+                var top = person1Info.top + person1Info.pictop; 
+                person1.addClass(person1Info.face + '1').css("top", top + 'px');
                 if(person1Info.left < 418)
                 {
                     person1Info.left += 2;
@@ -137,6 +123,9 @@
             //left
             if (37 in keysDown) { 
                 person1Info.face = 'l';
+                person1Info.pictop = -40; 
+                var top = person1Info.top + person1Info.pictop;
+                person1.addClass(person1Info.face + '1').css("top", top + 'px');
                 if(person1Info.left > 0)
                 {
                     person1Info.left -= 2;
@@ -145,6 +134,9 @@
             //up
             if (38 in keysDown) { 
                 person1Info.face = 'u';
+                person1Info.pictop = -120; 
+                var top = person1Info.top + person1Info.pictop;
+                person1.addClass(person1Info.face + '1').css("top", top + 'px');;
                 if(person1Info.top > 0)
                 {
                     person1Info.top -= 2;
@@ -153,6 +145,9 @@
             //down
             if (40 in keysDown) { 
                 person1Info.face = 'd';
+                person1Info.pictop = 0;
+                var top = person1Info.top + person1Info.pictop;
+                person1.addClass(person1Info.face + '1').css("top", top + 'px');;
                 if(person1Info.top < 380)
                 {
                     person1Info.top += 2;
@@ -163,6 +158,15 @@
             events.ShowMove();
         },
        
+    };
+
+    var DrawAnimation = {
+    	DrawPerson: function() {
+    		var left = person1Info.left + person1Info.picleft;
+            var top = person1Info.top + person1Info.pictop;
+    		person1.css("left", left + 'px');
+            person1.css("top", top + 'px');
+    	},
     };
 
     //全局变量，请勿重新定义（多个JS文件需要区分）
