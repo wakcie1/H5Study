@@ -1,0 +1,385 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form, 
+		fieldset,input,textarea,p,blockquote,th,td { 
+			margin:0; 
+			padding:0; 
+			list-style: none;
+		} 
+		table { 
+			border-collapse:collapse; 
+			border-spacing:0; 
+		} 
+		fieldset,img { 
+			border:0; 
+		} 
+		address,caption,cite,code,dfn,em,strong,th,var { 
+			font-style:normal; 
+			font-weight:normal; 
+		} 
+		a,a:hover{ text-decoration:none; color:#333}
+		footer {
+			background-color: #000000;
+		}
+
+		
+		.leftbox {
+	        float: left;
+	        width: 200px;
+			height: 800px;
+			text-align: center;
+			background-color: #2F4050;
+		}
+
+		.lefttop {
+	        padding-top: 10px;
+	        padding-bottom: 10px;
+			background-color: #233545;
+		}
+
+		.leftdown ul {
+			background-color: #293846;
+			user-select: none;
+		}
+
+		.leftdown ul li{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			display: block;
+			color: #97a1ab;
+			font-size: 14px;
+		}
+
+		.leftdown ul li:hover {
+			cursor: pointer;
+			color: #FFFFFF;
+		}
+		.h1 {
+			text-align: center;
+			display: block;
+			color: #97a1ab;
+			font-size: 16px;
+		}
+
+		.h2 {
+			padding-top: 10px;
+			padding-left: 10px;
+			padding-bottom: 10px;
+			text-align: center;
+			display: block;
+			color: #8994a4;
+			font-size: 14px;
+			overflow: hidden;
+			cursor:pointer;
+			background-color: #2f4050;
+			user-select: none;
+		}
+
+		.h2_show {
+			background-color: #293846;
+		}
+
+		.h2:hover {
+			padding-top: 10px;
+			padding-left: 10px;
+			padding-bottom: 10px;
+			text-align: center;
+			display: block;
+			color: #ffffff;
+			font-size: 14px;
+			overflow: hidden;
+			cursor:pointer;
+			background-color: #2f4050;
+			user-select: none;
+		}
+
+		.h2_show:hover {
+			background-color: #293846;
+		}
+
+		.imgR {
+			float:right;
+			margin-top:5px;
+			margin-right:15px;
+		}
+
+		.imgR_R {
+			transform: rotate(-90deg);
+		}
+
+		.rightbox {
+			margin-left: 200px;
+			background-color: #FFFFFF;
+			overflow: hidden;
+		}
+
+		.rightbox header {
+			height:50px; 
+			line-height:50px;
+			width: 100%;
+			padding-left: 20px;
+			background-color: #FFFFFF;
+			overflow: hidden;
+			display: flex;
+		}
+
+		.rightcontent {
+			height: 750px;
+			overflow: hidden;
+		    display: flex;
+		    background-color: #f3f3f4;
+		}
+
+		.rightcontent .left {
+			margin-top: 26px;
+			margin-left: 24px;
+			flex: 3.0;
+		}
+
+		.rightcontent .right {
+			margin-top: 26px;
+			margin-left: 24px;
+			flex: 2.0;
+		}
+	    .box1 {
+	    	border-top: 5px solid #e7eaec;
+	    	padding-top: 20px;
+	    	background-color: #ffffff;
+	    }
+
+		.box3 {
+	    	border-top: 5px solid #e7eaec;
+	    	background-color: #ffffff;
+	    }
+
+	    .box3 ul li {
+	    	height: 20px;
+	    	margin-left: 20px;
+	    	margin-right: 20px;
+	    	padding-top: 14px;
+	    	padding-bottom: 14px;
+	    	border-bottom: 2px solid #e7eaec;
+	    	display: flex;
+	    }
+
+	    .box3 ul li .span1 {
+	    	flex: 4.0;
+	    	color: #6a7987;
+	    }
+	    .box3 ul li .span2 {
+	    	flex: 1.0;
+	    	color: #6a7987;
+	    }
+
+	    .box1 .two {
+	    	margin: 20px;
+	    	flex: 1.0;
+	    	background-color: #f3f5f7;
+	    	text-align: center;
+	    }
+
+	    .box2 {
+	    	margin-top: 24px;
+	    	border-top: 5px solid #e7eaec;
+	    	padding-top: 20px;
+	    	background-color: #ffffff;
+	    }
+
+	    .box2 .four {
+	    	margin: 20px 10px;
+	    	flex: 1.0;
+	    	background-color: #f3f5f7;
+	    	text-align: center;
+	    }
+
+	    .box2 .one {
+	    	margin: 20px;
+	    	flex: 1.0;
+	    	background-color: #f3f5f7;
+	    	text-align: center;
+	    }
+
+	    .box2 .three {
+	    	margin-left: 5px;
+	    	margin-right: 5px;
+	    	padding-top: 10px;
+	    	padding-bottom: 10px;
+	    	flex: 1.0;
+	    	cursor:pointer;
+	    	background-color: #e7eaec;
+	    	text-align: center;
+	    }
+
+	    .box2 .black {
+	    	margin-left: 5px;
+	    	margin-right: 5px;
+	    	padding-top: 10px;
+	    	padding-bottom: 10px;
+	    	flex: 1.0;
+	    }
+
+	    .box2 .three:hover {
+	    	background-color: #1ab394;
+	    }
+
+	    .notice {
+	    	flex: 1.0;
+	    	text-align: center;
+	    	margin-top: 10px;
+	    	font-size: 18px;
+	    	height: 27px;
+	    	cursor:pointer;
+	    	padding-bottom: 1px;
+	    	border-bottom: 2px solid #e7eaec;
+	    }
+	    .notice:hover {
+	    	border-bottom: 3px solid #1ab394;
+	    }
+
+	</style>
+
+</head>
+<body>
+
+	<div class="leftbox">
+		<div class="lefttop">
+			<img class="logo" src="logo.png" alt=""> 
+			<span class="h1">外呼平台</span>
+		</div>
+		<div class="leftdown">
+			<span class="h2 h2_show" data-show="0" onclick="showMeum(this)"><img style="float:left;margin-top:2px;" src="icon1.png" alt="">公共管理<img class="imgR imgR_R" src="icon2.png" alt=""></span>
+			<ul id="ul1">
+				<li>
+					人员管理
+				</li>
+				<li>
+					坐席监控
+				</li>
+				<li>
+					会员管理
+				</li>
+			</ul>
+			<span class="h2" data-show="1" onclick="showMeum(this)"><img style="float:left;margin-top:2px;" src="icon3.png" alt="">外呼模块<img class="imgR" src="icon2.png" alt=""></span>
+			<span class="h2" data-show="1" onclick="showMeum(this)"><img style="float:left;margin-top:2px;" src="icon4.png" alt="">数据报表<img class="imgR" src="icon2.png" alt=""></span>
+		</div>
+	</div>
+	<div class="rightbox">
+	<header><div style="flex: 1.0;display: block;"><img src="pic1.png" alt="" style="margin-top:8px" ></div><div style="flex: 6.0;"></div><div style="flex: 3.0;overflow: hidden;"><span>王皓，您好！</span><img src="pic2.png" alt=""><span style="margin-left: 10px;color: #1ab394">在线</span><img src="pic3.png" alt=""><img style="margin-left: 10px;" src="pic4.png" alt=""><a href="#" style="margin-left: 10px;color: #c6c6c6;font-size: 16px;">退出系统</a></div></header>
+	<div class="rightcontent">
+		<div class="left">
+			<div class="box1">
+				<span style="margin-left: 20px">今日数据</span><img style="margin-left:80%" src="icon5.png">
+				<div style="display: flex;">
+					<div class="two">
+						<span style="display: block;margin-top:15px;color: #1c84c6;font-size: 40px;">100</span>
+						<span style="display: block;margin-bottom:15px;color: #676a6c;font-size: 16px;">今日拨打</span>
+					</div>
+					<div class="two">
+						<span style="display: block;margin-top:15px;color: #0dc3c5;font-size: 40px;">80</span>
+						<span style="display: block;margin-bottom:15px;color: #676a6c;font-size: 16px;">今日拨通</span>
+					</div>
+				</div>	
+			</div>
+			<div class="box2">
+				<span style="margin-left: 20px">我的客户</span><img style="margin-left:80%" src="icon5.png">
+				<div style="display: flex; margin-left: 30px;margin-right: 30px">
+					<div class="four">
+						<span style="display: block;margin-top:15px;color: #6a7987;font-size: 30px;">108</span>
+						<span style="display: block;margin-bottom:15px;color: #676a6c;font-size: 16px;">今日已跟进</span>
+					</div>
+					<div class="four">
+						<span style="display: block;margin-top:15px;color: #6a7987;font-size: 30px;">8</span>
+						<span style="display: block;margin-bottom:15px;color: #676a6c;font-size: 16px;">今日新分配</span>
+					</div>
+					<div class="four">
+						<span style="display: block;margin-top:15px;color: #6a7987;font-size: 30px;">58</span>
+						<span style="display: block;margin-bottom:15px;color: #676a6c;font-size: 16px;">今日预约</span>
+					</div>
+					<div class="four">
+						<span style="display: block;margin-top:15px;color: #6a7987;font-size: 30px;">800</span>
+						<span style="display: block;margin-bottom:15px;color: #676a6c;font-size: 16px;">我的会员</span>
+					</div>
+				</div>	
+			</div>
+			<div class="box2">
+				<span style="margin-left: 20px">我的业绩</span><span style="margin-left: 75%">更多></span>
+				<div style="display: flex;">
+					<div class="one">
+						<span style="display: block;margin-top:15px;color: #6a7987;font-size: 16px;">暂不支持</span>
+						<span style="display: block;margin-bottom:15px;color: #6a7987;font-size: 16px;">请到项目后台进行查询</span>
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div class="right">
+			<div class="box3">
+				<div style="display: flex;height: 40px;">
+					<div class="notice" >公告</div>
+					<div class="notice" >录音</div>
+					<div class="notice" >文档</div>
+				</div>
+				
+				<ul>
+					<li><span class="span1">关于停止使用代言人“佟大为”形象</span><span class="span2">2016.11.29</span></li>
+					<li><span class="span1">关于停止使用代言人“佟大为”形象</span><span class="span2">2016.11.29</span></li>
+					<li><span class="span1">关于停止使用代言人“佟大为”形象</span><span class="span2">2016.11.29</span></li>
+					<li><span class="span1">关于停止使用代言人“佟大为”形象</span><span class="span2">2016.11.29</span></li>
+					<li><span class="span1">关于停止使用代言人“佟大为”形象</span><span class="span2">2016.11.29</span></li>
+				</ul>
+				<div style="margin:20px;text-align: center;padding-bottom: 20px;color: #6a7987">更多></div>
+			</div>
+			<div class="box2">
+				<span style="margin-left: 20px">快读导航</span>
+				<div style="display: flex;padding-top: 20px; padding-left: 15px;padding-right: 15px;">
+					<div class="three">
+						国际机票
+					</div>
+					<div class="three">
+						国际酒店
+					</div>
+					<div class="three">
+						保险
+					</div>
+				</div>	
+				<div style="display: flex;margin-top: 10px; padding-bottom: 20px;padding-left: 15px;padding-right: 15px;">
+					<div class="three">
+						国内机票
+					</div>
+					<div class="black">
+						
+					</div>
+					<div class="black">
+						
+					</div>
+					
+				</div>	
+			</div>
+		</div>
+	</div>
+	
+	</div>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+     var showMeum = function(obj) {
+     	var datashow = $(obj).attr("data-show");
+     	if(datashow == 1)
+     	{
+     		$(obj).addClass("h2_show");
+			$(obj).next("ul").show();
+			$($(obj).children("img")[1]).addClass("imgR_R");
+			$(obj).attr("data-show", 0);
+     	}
+     	else
+     	{
+     		$(obj).removeClass("h2_show");
+     		$(obj).next("ul").hide();
+     		$($(obj).children("img")[1]).removeClass("imgR_R");
+     		$(obj).attr("data-show", 1);
+     	}
+     }
+</script>
+</body>
+</html>
