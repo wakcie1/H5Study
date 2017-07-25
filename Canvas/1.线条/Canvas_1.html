@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form, 
+		fieldset,input,textarea,p,blockquote,th,td { 
+			margin:0; 
+			padding:0; 
+			list-style: none;
+		} 
+		table { 
+			border-collapse:collapse; 
+			border-spacing:0; 
+		} 
+		fieldset,img { 
+			border:0; 
+		} 
+		address,caption,cite,code,dfn,em,strong,th,var { 
+			font-style:normal; 
+			font-weight:normal; 
+		} 
+		a,a:hover{ text-decoration:none; color:#333}
+	</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){ 
+	var canvas = document.getElementById('canvas');
+	canvas.height = 1200;
+	canvas.width = 1200;
+	var context = canvas.getContext('2d');
+	context.moveTo(100,100);
+	context.lineTo(700,700);
+	context.lineWidth = 10;
+	context.strokeStyle = "#058";
+	context.stroke();
+
+	context.beginPath();
+	context.moveTo(300,100);
+	context.lineTo(500,300);
+	context.lineTo(300,500);
+	context.closePath();
+
+	context.fillStyle = "yellow";
+	context.fill();
+	context.strokeStyle = "red";
+	context.stroke();
+
+    DrawRect1(context,600,200,200,200,5,"blue","green");
+    DrawRect2(context,700,350,200,200,5,"yellow","rgba(0,256,0,0.5)");
+});
+
+//绘制矩形(原始)
+function DrawRect(ctx,x,y,width,height,lineWidth,lineColor,fillColor) {
+	ctx.beginPath();
+	ctx.moveTo(x,y);
+	ctx.lineTo(x+width,y);
+	ctx.lineTo(x+width,y+height);
+	ctx.lineTo(x,y+height);
+	ctx.closePath();
+
+	ctx.fillStyle= fillColor;
+	ctx.strokeStyle= lineColor;
+	ctx.lineWidth = lineWidth;
+
+	ctx.fill();
+	ctx.stroke();
+}
+//绘制矩形1
+function DrawRect1(ctx,x,y,width,height,lineWidth,lineColor,fillColor) {
+	ctx.beginPath();
+	ctx.rect(x,y,width,height);
+	ctx.closePath();
+	ctx.fillStyle= fillColor;
+	ctx.strokeStyle= lineColor;
+	ctx.lineWidth = lineWidth;
+	ctx.fill();
+	ctx.stroke();
+}
+
+//绘制矩形2
+function DrawRect2(ctx,x,y,width,height,lineWidth,lineColor,fillColor) {
+	ctx.fillStyle= fillColor;
+	ctx.strokeStyle= lineColor;
+	ctx.lineWidth = lineWidth;
+	ctx.fillRect(x,y,width,height);
+	ctx.strokeRect(x,y,width,height);
+}
+
+</script>
+</body>
+</html>
