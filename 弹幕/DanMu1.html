@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form, 
+		fieldset,input,textarea,p,blockquote,th,td { 
+			margin:0; 
+			padding:0; 
+			list-style: none;
+		} 
+		table { 
+			border-collapse:collapse; 
+			border-spacing:0; 
+		} 
+		fieldset,img { 
+			border:0; 
+		} 
+		address,caption,cite,code,dfn,em,strong,th,var { 
+			font-style:normal; 
+			font-weight:normal; 
+		} 
+		a,a:hover{ text-decoration:none; color:#333}
+	</style>
+</head>
+<body id="body">
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){ 
+		danmu("1.弹幕功能实现1");
+		danmu("2.这个实现效果很糟糕");
+		danmu("3.使用的是创建DOM的方案");
+		danmu("4.然后使用setInterval循环更新DOM样式达到弹幕的效果");
+		danmu("5.随着数据的增多会越来越卡");
+		danmu("6.弹幕还会重叠");
+		danmu("7.只实现了颜色的随机，大小和移动速度没有随机");
+		danmu("8.体验很差");
+　　}); 
+
+
+    function rand(min, max) {
+   		return parseInt(Math.random() * (max - min) + 1) + min;
+   	}
+
+	//弹幕
+	function danmu(str){
+	　　var _top = rand(0,18);
+	　　var danmuobj = $('<div style="position: absolute;height:1.2rem; font-size: 1.1rem;z-index: 10;overflow: hidden; white-space: nowrap;">'+str+'</div>')
+	　　danmuobj.css({"left":$(window).width()+"5rem"})
+	　　danmuobj.css({color:getReandomColor()})
+	　　$("#body").append(danmuobj);
+	　　var num = $(window).width();
+	　　setInterval(function(){
+	　　　　num--;
+	　　　　if (num<0) {
+	　　　　num=$(window).width();
+	　　　　}
+	　　　　danmuobj.css({left:num,top:_top+"rem"});
+	　　},20)
+	}
+
+	//随机颜色
+　　function getReandomColor(){
+　　　　return '#'+(function(h){
+　　　　return new Array(7-h.length).join("0")+h
+　　　　})((Math.random()*0x1000000<<0).toString(16))
+　　}
+</script>
+</body>
+</html>
