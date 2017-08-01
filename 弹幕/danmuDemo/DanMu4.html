@@ -4,55 +4,70 @@
 <meta charset="utf-8">
 <title></title>
 <style type="text/css">
+	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form, 
+	fieldset,input,textarea,p,blockquote,th,td { 
+		margin:0; 
+		padding:0; 
+		list-style: none;
+	} 
+	table { 
+		border-collapse:collapse; 
+		border-spacing:0; 
+	} 
+	fieldset,img { 
+		border:0; 
+	} 
+	address,caption,cite,code,dfn,em,strong,th,var { 
+		font-style:normal; 
+		font-weight:normal; 
+	} 
+	a,a:hover{ text-decoration:none; color:#333}
     html,body{margin:0px;padding:0px;width: 100%;height:100%;font-family: "微软雅黑";font-size: 62.5%;}
 
 	.main {
 		width: 100%;
 		height: 100%;
 		float: left;
-		overflow: hidden;
+		background-image: url("img/bg2.jpg");
 	}
 
 	.header {
 		float: left;
 		width: 100%;
 		height: 10%;
-		background-color: green;
 	}
 
 	.left {
 		float: left;
-		width: 20%;
+		width: 15%;
 		height: 80%;
-		background-color: red;
 	}
 
 	.right {
 		float: right;
-		width: 20%;
+		width: 15%;
 		height: 80%;
-		background-color: red;
 	}
 
 	.center {
-		width: 60%;
+		width: 70%;
 		height: 80%;
 		float: left;
 		overflow: hidden;
+		background-color: rgba(192,192,192,0.5);
+		box-shadow: 5px 5px 5px #888888;
+		border-radius: 10px;
 	}
 
 	.foot {
 		float: left;
 		width: 100%;
 		height: 10%;
-		background-color: blue;
 	}
 
     .string {
-        width:auto;
         height: 40px;
         position: absolute;
-        overflow: hidden;
         color:#000;
         font-size: 4em;
         line-height: 1.5em;
@@ -64,11 +79,11 @@
 
 <body>
 
-<div class="main">
+<div class="main" id="main">
 	<div class="header">1</div>
 	<div class="left">2</div>
 	<div class="right">3</div>
-	<div class="center" id="boxDom"><span class='string'>1111</span></div>
+	<div class="center" id="boxDom"><span class='string'>1111111111111111111222222222222221</span></div>
 	<div class="foot">5</div>
 </div>
     
@@ -84,14 +99,21 @@
 <script language="javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script language="javascript">
 
+		//屏幕分辨率的高：
+		var screenH = parseInt(window.screen.height);
+		//屏幕分辨率的宽：
+		var screenW = parseInt(window.screen.width); 
 
        	var boxDom=$("#boxDom");
+       	var mainDiv=$("#main");
         var btnDom=$("#btn");
-        var pageH=parseInt(boxDom.height());
-   		var pageW=parseInt(boxDom.width());
+        var mainH = parseInt(mainDiv.height());
+        var boxDomH=parseInt(boxDom.height());
+   		var boxDomW=parseInt(boxDom.width());
+   		var maxStringH = boxDomH + mainH*0.1 - 40;
         var Top,Right;
         var width;
-        width=pageW;
+        width=boxDomW;
         var colorArr=["#cfaf12","#12af01","#981234","#adefsa","#db6be4","#f5264c","#d34a74"];
 
    $(function(){
@@ -103,10 +125,10 @@
             }
         };
         damu("1.测试一下弹幕");
-        damu("2.这个弹幕方法在新增的时候创建一个新的DOM");
-        damu("3.然后使用CSS的动画效果来实现从左到右的滚动，性能比较好");
-        damu("4.颜色随机");
-        damu("5.速度随机");
+        //damu("2.这个弹幕方法在新增的时候创建一个新的DOM");
+        //damu("3.然后使用CSS的动画效果来实现从左到右的滚动，性能比较好");
+        //damu("4.颜色随机");
+        //damu("5.速度随机");
     });
 
     function sendDamu(){
@@ -119,15 +141,17 @@
         var creSpan=$("<span class='string'></span>");
         creSpan.text(text);
 
-        Top=parseInt(pageH*(Math.random()));
+  		Top=parseInt(boxDomH*(Math.random()) + mainH*0.1);
+  		if(Top > maxStringH )
+  		{
+  			Top = maxStringH;
+  		}
         var num=parseInt(colorArr.length*(Math.random()));
-        if(Top>pageH-90){
-            Top=pageH-90;
-        }
+       
         creSpan.css({"top":Top,"right":-300,"color":getRandomColor()});
         boxDom.append(creSpan);
         var spanDom=$("#boxDom>span:last-child");
-        spanDom.stop().animate({"right":pageW+300},getRandomSpeed(),"linear",function(){
+        spanDom.stop().animate({"right":boxDomW+300},getRandomSpeed(),"linear",function(){
                     $(this).remove();
                 });
     };
