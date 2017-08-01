@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+    html,body{margin:0px;padding:0px;width: 100%;height:100%;font-family: "微软雅黑";font-size: 62.5%;}
+
+	.main {
+		width: 100%;
+		height: 100%;
+		float: left;
+		overflow: hidden;
+	}
+
+	.header {
+		float: left;
+		width: 100%;
+		height: 10%;
+		background-color: green;
+	}
+
+	.left {
+		float: left;
+		width: 20%;
+		height: 80%;
+		background-color: red;
+	}
+
+	.right {
+		float: right;
+		width: 20%;
+		height: 80%;
+		background-color: red;
+	}
+
+	.center {
+		width: 60%;
+		height: 80%;
+		float: left;
+		overflow: hidden;
+	}
+
+	.foot {
+		float: left;
+		width: 100%;
+		height: 10%;
+		background-color: blue;
+	}
+
+    .string {
+        width:auto;
+        height: 40px;
+        position: absolute;
+        overflow: hidden;
+        color:#000;
+        font-size: 4em;
+        line-height: 1.5em;
+        cursor: pointer;
+        white-space:nowrap;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="main">
+	<div class="header">1</div>
+	<div class="left">2</div>
+	<div class="right">3</div>
+	<div class="center" id="boxDom"><span class='string'>1111</span></div>
+	<div class="foot">5</div>
+</div>
+    
+</div>
+<div class="idDom" id="idDom">
+        <div class="content">
+            <p class="title">吐槽:</p>
+            <input type="text" class="text" id="text" />
+            <button type="button" class="btn" id="btn">发射</button>
+        </div>
+    </div>
+</body>
+<script language="javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script language="javascript">
+
+
+       	var boxDom=$("#boxDom");
+        var btnDom=$("#btn");
+        var pageH=parseInt(boxDom.height());
+   		var pageW=parseInt(boxDom.width());
+        var Top,Right;
+        var width;
+        width=pageW;
+        var colorArr=["#cfaf12","#12af01","#981234","#adefsa","#db6be4","#f5264c","#d34a74"];
+
+   $(function(){
+       
+        btnDom.bind("click",sendDamu);
+        document.onkeydown=function(e){
+            if(e.keyCode == 13){
+                sendDamu();
+            }
+        };
+        damu("1.测试一下弹幕");
+        damu("2.这个弹幕方法在新增的时候创建一个新的DOM");
+        damu("3.然后使用CSS的动画效果来实现从左到右的滚动，性能比较好");
+        damu("4.颜色随机");
+        damu("5.速度随机");
+    });
+
+    function sendDamu(){
+        var text = $("#text").val();
+        damu(text);
+        $("#text").val("");
+    };
+
+    function damu(text){
+        var creSpan=$("<span class='string'></span>");
+        creSpan.text(text);
+
+        Top=parseInt(pageH*(Math.random()));
+        var num=parseInt(colorArr.length*(Math.random()));
+        if(Top>pageH-90){
+            Top=pageH-90;
+        }
+        creSpan.css({"top":Top,"right":-300,"color":getRandomColor()});
+        boxDom.append(creSpan);
+        var spanDom=$("#boxDom>span:last-child");
+        spanDom.stop().animate({"right":pageW+300},getRandomSpeed(),"linear",function(){
+                    $(this).remove();
+                });
+    };
+    function getRandomColor(){
+        return '#' + (function(h){
+            return new Array(7 - h.length).join("0") + h
+        })((Math.random() * 0x1000000 << 0).toString(16));
+    };
+    function getRandomSpeed(){
+        return parseInt(Math.random() * (20000 - 10000) + 1) + 10000;
+    };
+</script>
+</html>
